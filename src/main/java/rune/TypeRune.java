@@ -27,7 +27,7 @@ public enum TypeRune {
     CYCLE_RUNE(1),
 
     // Руна направления движения заклинания.
-    DIRECTION_RUNE(1);
+    DIRECTION_RUNE(2);
 
     public int priority;
 

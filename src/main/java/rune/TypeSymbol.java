@@ -4,54 +4,53 @@ public enum TypeSymbol {
     //список всех существующих рун по группам
 
     //NOURISHING_RUNE
-    BASE_NOURISHING_RUNE,
+    BASE_NOURISHING_RUNE(1),
 
     //SIZE_RUNE
     // В идеале надо сделать полную настройку размера клиентом в заданнах нами границах
-    LARGE_SIZE_RUNE,
-    MEDIUM_SIZE_RUNE,
-    SMALL_SIZE_RUNE,
+    LARGE_SIZE_RUNE(1),
+    MEDIUM_SIZE_RUNE(2),
+    SMALL_SIZE_RUNE(3),
 
     //SHAPE_RUNE
-    TRIANGLE_SHAPE_RUNE,
-    CUBE_SHAPE_RUNE,
-    SPHERE_SHAPE_RUNE,
-    WOLF_SHAPE_RUNE,
+    TRIANGLE_SHAPE_RUNE(1),
+    CUBE_SHAPE_RUNE(2),
+    SPHERE_SHAPE_RUNE(3),
+    WOLF_SHAPE_RUNE(4),
 
     //CONCENTRATION_ENERGY_RUNE
     // Так же и здесь, надо сделать полную настройку концентрации клиентом в заданнах нами границах
     // То есть например добавить для всех рун служебное значение, которое в зависимости от руны
     // будет иметь тот или иной смысл.
-    BIG_CONCENTRATION_RUNE,
-    MEDIUM_CONCENTRATION_RUNE,
-    SMALL_CONCENTRATION_RUNE,
+    BIG_CONCENTRATION_RUNE(1),
+    MEDIUM_CONCENTRATION_RUNE(2),
+    SMALL_CONCENTRATION_RUNE(3),
 
     //ENERGY_TYPE_RUNE
-    FIRE_ENERGY_RUNE,
-    WATER_ENERGY_RUNE,
-    EARTH_ENERGY_RUNE,
-    AIR_ENERGY_RUNE,
-    PURE_ENERGY_RUNE,
-    PRANA_ENERGY_RUNE,
+    FIRE_ENERGY_RUNE(1),
+    WATER_ENERGY_RUNE(2),
+    EARTH_ENERGY_RUNE(3),
+    AIR_ENERGY_RUNE(4),
+    PURE_ENERGY_RUNE(5),
+    PRANA_ENERGY_RUNE(6),
 
     //CYCLE_RUNE
     //можно заменить на одну руну, если ввести служебную переменную
-    START_CYCLE_RUNE,
-    END_CYCLE_RUNE,
+    START_CYCLE_RUNE(1),
+    END_CYCLE_RUNE(2),
+    SMALL_COUNTER_CYCLE_RUNE(3),
+    MEDIUM_COUNTER_CYCLE_RUNE(4),
+    BIG_COUNTER_CYCLE_RUNE(5),
 
     //DIRECTION_RUNE
-    LEFT_DIRECTION_RUNE,
-    RIGHT_DIRECTION_RUNE,
-    FORWARD_DIRECTION_RUNE,
-    BACKWARD_DIRECTION_RUNE;
+    LEFT_DIRECTION_RUNE(1),
+    RIGHT_DIRECTION_RUNE(2),
+    FORWARD_DIRECTION_RUNE(3),
+    BACKWARD_DIRECTION_RUNE(4);
 
-    // Я бы добавил каждой руне поля: <стоимость в мане> и <количество затрачиваемового времени на каст>
-
-
-    // эта конструкция решит множество проблем, вопрос надо ли её добавлять или можно обойтись без неё
-    // например её можно использовать, как счётчик итераций цикла; уровня концентрации; размера;
-    // длины шага, для рун типа движения; множитель затрат того или иного типа энергии
-    // public int serviceVariable;
-    // TypeRune(int serviceVariable) { this.serviceVariable = serviceVariable; }
-
+    public int symbolId;
+    // ноль - отсутсвие, поэтому с единицы
+    TypeSymbol(int symbolId) {
+        this.symbolId = symbolId;
+    }
 }

@@ -1,5 +1,9 @@
 package rune;
 
+import spell.Spell;
+
+import java.util.ArrayList;
+
 public interface RuneAnalyzer {
 
     static RuneAnalyzer createNourishingRuneAnalyzer(){
@@ -18,15 +22,17 @@ public interface RuneAnalyzer {
         return null;
     }
 
-    static RuneAnalyzer createSourceRuneAnalyzer(){
+    static RuneAnalyzer createEnergyTypeRuneAnalyzer(){
         return null;
     }
+
+    static RuneAnalyzer createCycleRuneAnalyzer() { return null; }
 
     static RuneAnalyzer createDirectionRuneAnalyzer(){
         return null;
     }
 
-    boolean analyze(Rune rune);
+    Spell analyze(Rune rune, Spell spellInstance);
 
     TypeRune getType();
 

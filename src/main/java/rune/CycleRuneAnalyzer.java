@@ -4,8 +4,7 @@ import spell.Spell;
 
 import java.util.ArrayList;
 
-public class NourishingRuneAnalyzer implements RuneAnalyzer{
-
+public class CycleRuneAnalyzer implements RuneAnalyzer{
     @Override
     public Spell analyze(Rune rune, Spell spellInstance) {
         Spell returnSpellInstance = spellInstance;
@@ -14,6 +13,6 @@ public class NourishingRuneAnalyzer implements RuneAnalyzer{
 
     @Override
     public TypeRune getType() {
-        return TypeRune.NOURISHING_RUNE;
+        return TypeRune.CYCLE_RUNE;
     }
 }
