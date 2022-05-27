@@ -38,9 +38,9 @@ public enum TypeSymbol {
     //можно заменить на одну руну, если ввести служебную переменную
     START_CYCLE_RUNE(1),
     END_CYCLE_RUNE(2),
-    SMALL_COUNTER_CYCLE_RUNE(3),
-    MEDIUM_COUNTER_CYCLE_RUNE(4),
-    BIG_COUNTER_CYCLE_RUNE(5),
+    SMALL_COUNTER_CYCLE_RUNE(3), // 5
+    MEDIUM_COUNTER_CYCLE_RUNE(4), // 10
+    BIG_COUNTER_CYCLE_RUNE(5), // 15
 
     //DIRECTION_RUNE
     LEFT_DIRECTION_RUNE(1),
