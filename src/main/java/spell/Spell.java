@@ -18,12 +18,12 @@ public class Spell {
 
     public static final int MAX_SPELL_LENGTH = 50;
 
-    public void addRuneToList(RuneTemplate rune){
+    public boolean addRuneToList(RuneTemplate rune){
         if (rune == null || !isCorrectRune(rune) || runeList.size() == MAX_SPELL_LENGTH){
-            return;
+            return false;
         }
-
         runeList.add(rune);
+        return true;
     }
 
     private boolean isCorrectRune(RuneTemplate rune){

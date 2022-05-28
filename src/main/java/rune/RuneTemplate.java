@@ -1,11 +1,5 @@
 package rune;
 
-import jdk.nashorn.api.tree.SimpleTreeVisitorES5_1;
-import spell.Spell;
-
-import java.util.List;
-import java.util.Objects;
-
 public abstract class RuneTemplate<T1, T2, T3, T4, T5, T6> {
     private final T1 costInEnergy;
     private final T2 timeCast;
