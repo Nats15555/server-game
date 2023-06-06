@@ -27,7 +27,7 @@ public class AuthorizationServer extends Thread {
     private void service(int port) throws IOException {
         System.out.println("Try to connect to Database");
         PGSFunctions db_archMagica = new PGSFunctions();
-        db_archMagica.connect_to_db("archmagica","postgres","hasker102*Holos228");
+        db_archMagica.connect_to_db("archmagica","postgres","");
         if (db_archMagica.getConn() == null){
             System.out.println("Failed to start server");
             return;
