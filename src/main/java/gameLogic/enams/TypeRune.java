@@ -1,4 +1,4 @@
-package rune;
+package gameLogic.enams;
 
 public enum TypeRune {
 
