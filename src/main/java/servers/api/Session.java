@@ -1,34 +1,21 @@
 package servers.api;
 
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
-
-import javax.crypto.spec.SecretKeySpec;
-import java.security.Key;
-import java.util.Base64;
-import java.util.Date;
-
-
+import java.nio.charset.StandardCharsets;
+import java.util.*;
 
 public class Session {
-    public String getSession(String username, String secretKey) {
+
+    HashMap<Integer, String> activeSessions = new HashMap<>();
+    public void register(int id) throws Exception {
         String secret = "jwtSalt";
-
-        Key hmacKey = new SecretKeySpec(Base64.getDecoder().decode(secret),
-                SignatureAlgorithm.HS256.getJcaName());
-
-        Date date = new Date();
-
-        String jwtString = Jwts.builder()
-                .claim("username", username)
-                .setIssuedAt(date)
-                .signWith(SignatureAlgorithm.HS512, hmacKey)
-                .compact();
-
-        return jwtString;
+        Random random = new Random();
+        int randomValue = random.nextInt(100000) % 2000;
+        this.activeSessions.put(id,HashCode.getHash(String.valueOf(randomValue),secret.getBytes(StandardCharsets.UTF_8)));
     }
 
-    public String parseSession(){
-        return "parsed";
+    public String get(int id) throws Exception {
+        if (this.activeSessions.get(id) == null)
+            this.register(id);
+        return this.activeSessions.get(id);
     }
 }

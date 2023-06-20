@@ -1,6 +1,7 @@
 package servers;
 
-import servers.api.APIAnalyzer;
+import servers.api.AuthorizationServerAPIAnalyzer;
+import servers.api.Session;
 import servers.database.PGSFunctions;
 
 import java.io.*;
@@ -9,30 +10,22 @@ import java.net.*;
 public class AuthorizationServer extends Thread {
     private DatagramSocket socket;
 
-    public AuthorizationServer(int port) throws SocketException { socket = new DatagramSocket(port); }
+    private Session session;
 
-    public static void main(String[] args) {
-        int port = 4445;
-        try {
-            AuthorizationServer server = new AuthorizationServer(port);
-            server.service(port);
-        } catch (SocketException ex) {
-            System.out.println("Socket error: " + ex.getMessage());
-        } catch (IOException ex) {
-            System.out.println("I/O error: " + ex.getMessage());
-        }
-        System.out.println("Server stopped");
+    public AuthorizationServer(int port, Session session) throws SocketException {
+        socket = new DatagramSocket(port);
+        this.session = session;
     }
 
-    private void service(int port) throws IOException {
+    public void service(int port) throws IOException {
         System.out.println("Try to connect to Database");
         PGSFunctions db_archMagica = new PGSFunctions();
-        db_archMagica.connect_to_db("archmagica","postgres","");
+        db_archMagica.connect_to_db("k","k","k");
         if (db_archMagica.getConn() == null){
             System.out.println("Failed to start server");
             return;
         }
-        APIAnalyzer apiAnalyzer = new APIAnalyzer();
+        AuthorizationServerAPIAnalyzer authorizationServerApiAnalyzer = new AuthorizationServerAPIAnalyzer();
 
         System.out.println("Server started on port: " + port);
             while (true) {
@@ -42,7 +35,7 @@ public class AuthorizationServer extends Thread {
                 String msg = new String(buf, "US-ASCII");
                 System.out.println("Message: " + msg.trim());
                 String answer;
-                answer = apiAnalyzer.analyze(msg.trim(), db_archMagica.getConn());
+                answer = authorizationServerApiAnalyzer.analyze(msg.trim(), db_archMagica.getConn(), this.session);
 
                 InetAddress clientAddress = request.getAddress();
                 int clientPort = request.getPort();
