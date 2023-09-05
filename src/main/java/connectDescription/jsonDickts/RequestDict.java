@@ -1,4 +1,4 @@
-package servers.api.jsonDickts;
+package connectDescription.jsonDickts;
 
 import java.util.Map;
 

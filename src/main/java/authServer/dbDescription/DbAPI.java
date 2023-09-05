@@ -1,13 +1,13 @@
-package servers.api;
+package authServer.dbDescription;
 
-import servers.database.DbObject;
-import servers.database.PGSFunctions;
-import servers.database.User;
+import authServer.dbDescription.database.DbObject;
+import authServer.dbDescription.database.PGSFunctions;
+import authServer.dbDescription.database.User;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 
-public class APIWithDb {
+public class DbAPI {
     private static PGSFunctions pgsFunctions = new PGSFunctions();
 
     public User getUser(String username, String password, Connection connection){
@@ -28,7 +28,7 @@ public class APIWithDb {
     }
 
     public String addUser(String username, String pass, Connection connection){
-        servers.database.User user;
+        authServer.dbDescription.database.User user;
         DbObject dbObj = new DbObject();
         try {
             user = new User(username, pass);

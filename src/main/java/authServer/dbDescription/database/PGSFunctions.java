@@ -1,4 +1,4 @@
-package servers.database;
+package authServer.dbDescription.database;
 
 import java.sql.*;
 import java.util.Calendar;
@@ -12,7 +12,7 @@ public class PGSFunctions {
     private static final String SELECT_USER_QUERY = "SELECT id, username, password FROM users WHERE username = ?";
     private Connection conn = null;
     private String salt = "baseSalt";
-    public void connect_to_db(String dbname, String username, String pass){
+    private void connect_to_db(String dbname, String username, String pass){
         try{
             Class.forName("org.postgresql.Driver");
             conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/" + dbname,username,pass);
@@ -26,6 +26,10 @@ public class PGSFunctions {
             logger.info(String.valueOf(e));
             System.out.println(e);
         }
+    }
+
+    public void connect_to_db(String dbName, User user){
+        connect_to_db(dbName, user.getuserName(), user.getHashPass());
     }
 
     public void insertRecord(DbObject dbObject, Connection connection) throws SQLException {

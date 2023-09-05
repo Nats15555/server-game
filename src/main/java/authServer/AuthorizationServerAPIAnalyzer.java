@@ -1,20 +1,25 @@
-package servers.api;
+package authServer;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import servers.api.jsonDickts.AnswerDict;
-import servers.api.jsonDickts.RequestDict;
-import servers.database.User;
+import authServer.dbDescription.DbAPI;
+import authServer.dbDescription.HashCode;
+import connectDescription.jsonDickts.AnswerDict;
+import connectDescription.jsonDickts.RequestDict;
+import connectDescription.connection.Client;
+import connectDescription.connection.SessionList;
+import authServer.dbDescription.database.User;
 
+import java.net.InetAddress;
 import java.nio.charset.StandardCharsets;
 import java.sql.Connection;
 import java.util.HashMap;
 import java.util.Map;
 
 public class AuthorizationServerAPIAnalyzer {
-    public String analyze(String jsonString, Connection connection, Session session){
-        Map<String, String> ans = new HashMap<String, String>();
+    public String analyze(String jsonString, Connection connection, SessionList sessionList, InetAddress clientAddress, int clientPort){
+        Map<String, String> answerToUser = new HashMap<String, String>();
         String description = "wrong request", method = null, status = "Bad request";
 
         Gson gson = new GsonBuilder()
@@ -23,12 +28,12 @@ public class AuthorizationServerAPIAnalyzer {
 
         RequestDict requestDict = gson.fromJson(jsonString, RequestDict.class);
 
-        APIWithDb apiWithDb = new APIWithDb();
+        DbAPI dbAPI = new DbAPI();
 
         switch (requestDict.method){
             case "addUser":
                 method = "addUser";
-                if(apiWithDb.addUser(requestDict.fields.get("username"),
+                if(dbAPI.addUser(requestDict.fields.get("username"),
                         requestDict.fields.get("password"),connection) == "User added"){
                     status = "OK";
                     description = "User added";
@@ -39,7 +44,7 @@ public class AuthorizationServerAPIAnalyzer {
             case "getSession":
                 method = "getSession";
 
-                User user = apiWithDb.getUser(requestDict.fields.get("username"),
+                User user = dbAPI.getUser(requestDict.fields.get("username"),
                         requestDict.fields.get("password"),connection);
 
                 description = "Not correct username or password";
@@ -48,7 +53,8 @@ public class AuthorizationServerAPIAnalyzer {
                     if (user.getHashPass().equals(HashCode.getHash(requestDict.fields.get("password"),
                             "userSalt".getBytes(StandardCharsets.UTF_8)))){
                         status = "OK";
-                        description = session.get(user.getId());
+                        sessionList.register(user.getId(), new Client(clientAddress,clientPort));
+                        description = sessionList.getSession(user.getId());
                     }
                 } catch (Exception e) {
                     System.out.println(e);
@@ -56,8 +62,8 @@ public class AuthorizationServerAPIAnalyzer {
                 break;
         }
 
-        ans.put("description", description);
-        AnswerDict answerDict = new AnswerDict(method,status,ans);
+        answerToUser.put("description", description);
+        AnswerDict answerDict = new AnswerDict(method,status,answerToUser);
 
         return gson.toJson(answerDict);
     }

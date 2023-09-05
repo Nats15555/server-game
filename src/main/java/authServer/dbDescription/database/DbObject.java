@@ -1,4 +1,4 @@
-package servers.database;
+package authServer.dbDescription.database;
 
 public class DbObject<T extends DataBaseTableUnit> {
     private T Obj;

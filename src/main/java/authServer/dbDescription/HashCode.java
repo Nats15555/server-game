@@ -1,4 +1,4 @@
-package servers.api;
+package authServer.dbDescription;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;

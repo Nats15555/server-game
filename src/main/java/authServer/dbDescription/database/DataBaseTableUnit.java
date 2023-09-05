@@ -1,4 +1,4 @@
-package servers.database;
+package authServer.dbDescription.database;
 
 public class DataBaseTableUnit {
     private String unitName;

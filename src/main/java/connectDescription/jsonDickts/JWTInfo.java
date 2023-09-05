@@ -1,4 +1,4 @@
-package servers.api.jsonDickts;
+package connectDescription.jsonDickts;
 
 public class JWTInfo {
     private int id;
