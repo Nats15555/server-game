@@ -1,4 +1,4 @@
-package enginePhysicsCore.enams;
+package gameLogic.levelDescriptors.enams;
 
 public enum LevelObjectType {
     PLAYER,

@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LevelAPI {
-    public String analyze(String jsonString, Connection connection, SessionList sessionList, InetAddress clientAddress, int clientPort){
+    public String analyze(String jsonString, Connection connection, SessionList sessionList, InetAddress clientAddress, int clientPort) {
         Map<String, String> answerToUser = new HashMap<String, String>();
         String description = "wrong request", method = null, status = "Bad request";
 
@@ -25,7 +25,7 @@ public class LevelAPI {
 
         DbAPI dbAPI = new DbAPI();
 
-        switch (requestDict.method){
+        switch (requestDict.method) {
 
             case "setLevel":
                 method = "setLevel";
@@ -34,7 +34,7 @@ public class LevelAPI {
         }
 
         answerToUser.put("description", description);
-        AnswerDict answerDict = new AnswerDict(method,status,answerToUser);
+        AnswerDict answerDict = new AnswerDict(method, status, answerToUser);
 
         return gson.toJson(answerDict);
     }

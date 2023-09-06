@@ -11,6 +11,10 @@ public class User extends DataBaseTableUnit {
     private String password;
     private String hashPassword;
 
+    public String getPassword() {
+        return password;
+    }
+
     public User(String userName, String password) {
         setUnitName("User");
         this.userName = userName;
@@ -21,7 +25,7 @@ public class User extends DataBaseTableUnit {
             throw new RuntimeException(e);
         }
     }
-    
+
     public void doHashPassword() throws Exception {
         this.hashPassword = HashCode.getHash(this.password, "userSalt".getBytes(StandardCharsets.UTF_8));
     }

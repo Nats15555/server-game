@@ -1,4 +1,4 @@
-package gameLogic.enams;
+package gameLogic.rune.enams;
 
 public enum TypeSymbol {
     //список всех существующих рун по группам
@@ -49,6 +49,7 @@ public enum TypeSymbol {
     BACKWARD_DIRECTION_RUNE(4);
 
     public int symbolId;
+
     // ноль - отсутсвие, поэтому с единицы
     TypeSymbol(int symbolId) {
         this.symbolId = symbolId;

@@ -1,6 +1,7 @@
-package gameLogic.main;
+package main;
 
 import authServer.AuthorizationServer;
+import authServer.dbDescription.creation.DataBaseCreation;
 import connectDescription.connection.SessionList;
 
 import java.io.IOException;
@@ -8,6 +9,13 @@ import java.net.SocketException;
 
 public class Main {
     public static void main(String[] args) {
+        boolean createDB = false;
+        if (createDB) {
+            DataBaseCreation dataBaseCreation = new DataBaseCreation();
+            dataBaseCreation.create();
+        }
+
+
         SessionList sessionList = new SessionList();
         System.out.println("Try to start Authorization Server");
         authorizationServerServiceStart(4445, sessionList);

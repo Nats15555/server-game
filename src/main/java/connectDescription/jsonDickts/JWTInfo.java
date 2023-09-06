@@ -4,16 +4,24 @@ public class JWTInfo {
     private int id;
     private java.util.Date creationTime;
 
-    public JWTInfo(int id){
+    public JWTInfo(int id) {
         this.id = id;
         this.creationTime = new java.util.Date();
     }
 
-    public int getId() { return id; }
+    public int getId() {
+        return id;
+    }
 
-    public void setId(int id) { this.id = id; }
+    public void setId(int id) {
+        this.id = id;
+    }
 
-    public java.util.Date getCreationTime() { return creationTime; }
+    public java.util.Date getCreationTime() {
+        return creationTime;
+    }
 
-    public void setCreationTime(java.util.Date creationTime) { this.creationTime = creationTime; }
+    public void setCreationTime(java.util.Date creationTime) {
+        this.creationTime = creationTime;
+    }
 }

@@ -1,7 +1,7 @@
 package gameLogic.rune;
 
-import gameLogic.enams.TypeRune;
-import gameLogic.enams.TypeSymbol;
+import gameLogic.rune.enams.TypeRune;
+import gameLogic.rune.enams.TypeSymbol;
 
 public class Rune {
     private TypeRune typeRune;
@@ -12,11 +12,19 @@ public class Rune {
         this.typeSymbol = typeSymbol;
     }
 
-    public TypeRune getTypeRune() { return typeRune; }
+    public TypeRune getTypeRune() {
+        return typeRune;
+    }
 
-    public void setTypeRune(TypeRune typeRune) { this.typeRune = typeRune; }
+    public void setTypeRune(TypeRune typeRune) {
+        this.typeRune = typeRune;
+    }
 
-    public TypeSymbol getTypeSymbol() { return typeSymbol; }
+    public TypeSymbol getTypeSymbol() {
+        return typeSymbol;
+    }
 
-    public void setTypeSymbol(TypeSymbol typeSymbol) { this.typeSymbol = typeSymbol; }
+    public void setTypeSymbol(TypeSymbol typeSymbol) {
+        this.typeSymbol = typeSymbol;
+    }
 }

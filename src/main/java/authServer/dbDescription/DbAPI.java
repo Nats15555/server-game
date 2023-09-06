@@ -3,17 +3,19 @@ package authServer.dbDescription;
 import authServer.dbDescription.database.DbObject;
 import authServer.dbDescription.database.PGSFunctions;
 import authServer.dbDescription.database.User;
+import gameLogic.levelDescriptors.LevelObject;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class DbAPI {
     private static PGSFunctions pgsFunctions = new PGSFunctions();
 
-    public User getUser(String username, String password, Connection connection){
+    public User getUser(String username, String password, Connection connection) {
         User user;
         try {
-            user = new User(username,password);
+            user = new User(username, password);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -27,13 +29,13 @@ public class DbAPI {
         }
     }
 
-    public String addUser(String username, String pass, Connection connection){
+    public String addUser(String username, String pass, Connection connection) {
         authServer.dbDescription.database.User user;
         DbObject dbObj = new DbObject();
         try {
             user = new User(username, pass);
             dbObj.setObj(user);
-            if (pgsFunctions.selectRecord(dbObj, connection) != null){
+            if (pgsFunctions.selectRecord(dbObj, connection) != null) {
                 return "User already exists";
             }
             DbObject dbObject = new DbObject();
@@ -44,5 +46,14 @@ public class DbAPI {
             throw new RuntimeException(e);
         }
         return "User added";
+    }
+
+    public String saveLevel(Connection connection){
+        return "Level saved";
+    }
+
+    public ArrayList<LevelObject> getLevel(String levelName, Connection connection){
+        ArrayList<LevelObject> levelObjects = new ArrayList<>();
+        return levelObjects;
     }
 }

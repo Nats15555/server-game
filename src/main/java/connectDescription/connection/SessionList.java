@@ -5,7 +5,7 @@ import authServer.dbDescription.HashCode;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
-public class SessionList{
+public class SessionList {
 
     private HashMap<Integer, String> activeSessions = new HashMap<>();
     private HashMap<String, Client> clientsState = new HashMap<>();
@@ -16,14 +16,14 @@ public class SessionList{
 
         int randomValue = random.nextInt(100000) % 2000;
         String session;
-        session = HashCode.getHash(String.valueOf(randomValue),secret.getBytes(StandardCharsets.UTF_8));
-        while (clientsState.get(session) != null){
+        session = HashCode.getHash(String.valueOf(randomValue), secret.getBytes(StandardCharsets.UTF_8));
+        while (clientsState.get(session) != null) {
             randomValue = random.nextInt(100000) % 2000;
-            session = HashCode.getHash(String.valueOf(randomValue),secret.getBytes(StandardCharsets.UTF_8));
+            session = HashCode.getHash(String.valueOf(randomValue), secret.getBytes(StandardCharsets.UTF_8));
         }
 
         this.activeSessions.put(id, session);
-        this.clientsState.put(session,client);
+        this.clientsState.put(session, client);
     }
 
     public String getSession(int id) {

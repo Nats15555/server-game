@@ -9,7 +9,11 @@ public class DbObject<T extends DataBaseTableUnit> {
         objName = Obj.getUnitName();
     }
 
-    public T getObj() { return Obj; }
+    public T getObj() {
+        return Obj;
+    }
 
-    public String getObjName() { return objName; }
+    public String getObjName() {
+        return objName;
+    }
 }

@@ -11,11 +11,19 @@ public class RequestDict {
         this.fields = fields;
     }
 
-    public String getMethod() { return method; }
+    public String getMethod() {
+        return method;
+    }
 
-    public void setMethod(String method) { this.method = method; }
+    public void setMethod(String method) {
+        this.method = method;
+    }
 
-    public Map<String, String> getFields() { return fields; }
+    public Map<String, String> getFields() {
+        return fields;
+    }
 
-    public void setFields(Map<String, String> fields) { this.fields = fields; }
+    public void setFields(Map<String, String> fields) {
+        this.fields = fields;
+    }
 }
