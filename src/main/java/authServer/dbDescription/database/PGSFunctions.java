@@ -76,7 +76,6 @@ public class PGSFunctions {
                 levelObjectPreparedStatement.setString(2, gson.toJson(levelObject));
                 levelObjectPreparedStatement.executeUpdate();
             }
-
             break;
 
             default:
