@@ -4,6 +4,7 @@ import authServer.dbDescription.database.DbObject;
 import authServer.dbDescription.database.PGSFunctions;
 import authServer.dbDescription.database.User;
 import gameLogic.levelDescriptors.LevelObject;
+import gameLogic.levelDescriptors.levels.Level;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -48,11 +49,11 @@ public class DbAPI {
         return "User added";
     }
 
-    public String saveLevel(Connection connection){
-        return "Level saved";
+    public Level getLevel(Connection connection) {
+        return null;
     }
 
-    public ArrayList<LevelObject> getLevel(String levelName, Connection connection){
+    public ArrayList<LevelObject> getLevel(String levelName, Connection connection) {
         ArrayList<LevelObject> levelObjects = new ArrayList<>();
         return levelObjects;
     }

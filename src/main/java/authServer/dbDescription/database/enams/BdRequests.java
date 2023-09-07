@@ -7,7 +7,7 @@ public enum BdRequests {
     INSERT_INTO_LEVELS("INSERT INTO level_objects (level_name) VALUES (?);"),
     SELECT_FROM_LEVELS("SELECT level_id FROM levels WHERE level_name = ?;"),
     INSERT_INTO_LEVEL_OBJECTS("INSERT INTO level_objects (owner_id, level_object_info) VALUES (?, ?);"),
-    SELECT_FROM_LEVEL_OBJECTS("SELECT level_object_id, level_object_info WHERE owner_id = ?;");
+    SELECT_FROM_LEVEL_OBJECTS("SELECT * WHERE owner_id = ?;");
     public String request;
 
     BdRequests(String request) {

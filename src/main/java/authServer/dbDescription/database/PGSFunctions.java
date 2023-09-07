@@ -88,21 +88,24 @@ public class PGSFunctions {
             System.out.println("No connection to database");
             return null;
         }
+
         DbObject dbObj = new DbObject();
+        PreparedStatement preparedStatement;
+        ResultSet rs;
+        Gson gson = new Gson();
         switch (dbObject.getObjName()) {
             case "User":
                 User user = (User) dbObject.getObj();
-                // извлечение пользователя
-                PreparedStatement preparedStatement = connection.prepareStatement(BdRequests.SELECT_FROM_USERS.request);
-            {
+                preparedStatement = connection.prepareStatement(BdRequests.SELECT_FROM_USERS.request);
                 preparedStatement.setString(1, user.getuserName());
-                ResultSet rs = preparedStatement.executeQuery();
+                rs = preparedStatement.executeQuery();
 
-                while (rs.next()) {
+                User u = null;
+                if (rs.next()) {
                     int id = rs.getInt("id");
                     String username = rs.getString("username");
                     String password = rs.getString("password");
-                    User u = null;
+
                     try {
                         u = new User(username, password);
                         u.setId(id);
@@ -110,13 +113,45 @@ public class PGSFunctions {
                     } catch (Exception e) {
                         throw new RuntimeException(e);
                     }
-                    dbObj.setObj(u);
-                    return dbObj;
                 }
+                dbObj.setObj(u);
                 break;
-            }
+
+            case "Level":
+                Level level = (Level) dbObject.getObj();
+                preparedStatement = connection.prepareStatement(BdRequests.SELECT_FROM_LEVELS.request);
+                preparedStatement.setString(1, level.getLevelName());
+                rs = preparedStatement.executeQuery();
+
+                Level l = null;
+                if (rs.next()) {
+                    int level_id = rs.getInt("level_id");
+
+                    try {
+                        l = new Level(level_id, level.getLevelName());
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+
+                if (l == null) {
+                    break;
+                }
+
+                preparedStatement = connection.prepareStatement(BdRequests.SELECT_FROM_LEVEL_OBJECTS.request);
+                preparedStatement.setInt(1, l.getLevel_id()); // level_id = owner_id
+                rs = preparedStatement.executeQuery();
+
+                LevelObject lO = null;
+                while (rs.next()) {
+                    lO = gson.fromJson(rs.getString("level_object_info"), LevelObject.class);
+                    l.addLevelObject(lO);
+                }
+
+                dbObj.setObj(l);
+                break;
         }
-        return null;
+        return dbObj;
     }
 
     public Connection getConn() {
