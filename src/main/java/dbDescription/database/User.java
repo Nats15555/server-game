@@ -1,6 +1,6 @@
-package authServer.dbDescription.database;
+package dbDescription.database;
 
-import authServer.dbDescription.HashCode;
+import dbDescription.HashCode;
 
 import java.nio.charset.StandardCharsets;
 

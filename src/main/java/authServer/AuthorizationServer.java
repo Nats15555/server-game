@@ -1,15 +1,15 @@
 package authServer;
 
-import authServer.dbDescription.database.User;
+import dbDescription.database.User;
+import dbDescription.database.PGSFunctions;
 import connectDescription.connection.SessionList;
-import authServer.dbDescription.database.PGSFunctions;
-
 import java.io.*;
 import java.net.*;
 
 public class AuthorizationServer extends Thread {
     private DatagramSocket socket;
 
+    // вынести взаимодействие с сессиями на сервер оператор сессий sessionServer
     private SessionList sessionList;
 
     public AuthorizationServer(int port, SessionList sessionList) throws SocketException {
@@ -26,7 +26,7 @@ public class AuthorizationServer extends Thread {
             System.out.println("Failed to start server");
             return;
         }
-        AuthorizationServerAPIAnalyzer authorizationServerApiAnalyzer = new AuthorizationServerAPIAnalyzer();
+        AuthorizationServerAPI authorizationServerApi = new AuthorizationServerAPI();
 
         System.out.println("Server started on port: " + port);
         while (true) {
@@ -40,7 +40,7 @@ public class AuthorizationServer extends Thread {
             InetAddress clientAddress = request.getAddress();
             int clientPort = request.getPort();
 
-            answer = authorizationServerApiAnalyzer.analyze(
+            answer = authorizationServerApi.analyze(
                     msg.trim(), db_archMagica.getConn(), this.sessionList, clientAddress, clientPort);
 
             DatagramPacket response =

@@ -1,4 +1,4 @@
-package authServer.dbDescription.database.enams;
+package dbDescription.database.enams;
 
 public enum BdRequests {
     INSERT_INTO_USERS("INSERT INTO users (username, password, created_on, last_login) VALUES (?, ?, ?, ?);"),

@@ -1,4 +1,4 @@
-package authServer.dbDescription.creation;
+package dbDescription.creation;
 
 import java.sql.*;
 

@@ -1,4 +1,4 @@
-package gameLogic.rune.enams;
+package gameLogic.spellDescription.runeDescription.enams;
 
 public enum TypeSymbol {
     //список всех существующих рун по группам

@@ -3,13 +3,13 @@ package authServer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import authServer.dbDescription.DbAPI;
-import authServer.dbDescription.HashCode;
+import dbDescription.DbAPI;
+import dbDescription.HashCode;
 import connectDescription.jsonDickts.AnswerDict;
 import connectDescription.jsonDickts.RequestDict;
 import connectDescription.connection.Client;
 import connectDescription.connection.SessionList;
-import authServer.dbDescription.database.User;
+import dbDescription.database.User;
 
 import java.net.InetAddress;
 import java.nio.charset.StandardCharsets;
@@ -17,7 +17,7 @@ import java.sql.Connection;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AuthorizationServerAPIAnalyzer {
+public class AuthorizationServerAPI {
     public String analyze(String jsonString, Connection connection, SessionList sessionList, InetAddress clientAddress, int clientPort) {
         Map<String, String> answerToUser = new HashMap<String, String>();
         String description = "wrong request", method = null, status = "Bad request";

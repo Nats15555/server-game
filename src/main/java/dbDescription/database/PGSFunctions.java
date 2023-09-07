@@ -1,8 +1,8 @@
-package authServer.dbDescription.database;
+package dbDescription.database;
 
-import authServer.dbDescription.database.enams.BdRequests;
-import gameLogic.levelDescriptors.LevelObject;
-import gameLogic.levelDescriptors.levels.Level;
+import dbDescription.database.enams.BdRequests;
+import gameLogic.levelDescription.LevelObject;
+import gameLogic.levelDescription.Level;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 

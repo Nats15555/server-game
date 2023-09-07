@@ -1,8 +1,6 @@
-package gameLogic.levelDescriptors.levels;
+package gameLogic.levelDescription;
 
-import authServer.dbDescription.creation.DataBaseCreation;
-import authServer.dbDescription.database.DataBaseTableUnit;
-import gameLogic.levelDescriptors.LevelObject;
+import dbDescription.database.DataBaseTableUnit;
 
 import java.util.ArrayList;
 

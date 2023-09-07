@@ -1,7 +1,7 @@
-package gameLogic.levelDescriptors;
+package gameLogic.levelDescription;
 
-import authServer.dbDescription.database.DataBaseTableUnit;
-import gameLogic.levelDescriptors.enams.LevelObjectType;
+import dbDescription.database.DataBaseTableUnit;
+import gameLogic.levelDescription.enams.LevelObjectType;
 
 public class LevelObject extends DataBaseTableUnit {
     public double positionX, positionY, positionZ;
@@ -82,5 +82,13 @@ public class LevelObject extends DataBaseTableUnit {
 
     public void setObjectOwner(int objectOwner) {
         this.objectOwner = objectOwner;
+    }
+
+    public LevelObjectType getLevelObjectType() {
+        return levelObjectType;
+    }
+
+    public void setLevelObjectType(LevelObjectType levelObjectType) {
+        this.levelObjectType = levelObjectType;
     }
 }

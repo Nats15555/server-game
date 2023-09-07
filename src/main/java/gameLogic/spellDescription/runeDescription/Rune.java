@@ -1,7 +1,7 @@
-package gameLogic.rune;
+package gameLogic.spellDescription.runeDescription;
 
-import gameLogic.rune.enams.TypeRune;
-import gameLogic.rune.enams.TypeSymbol;
+import gameLogic.spellDescription.runeDescription.enams.TypeRune;
+import gameLogic.spellDescription.runeDescription.enams.TypeSymbol;
 
 public class Rune {
     private TypeRune typeRune;

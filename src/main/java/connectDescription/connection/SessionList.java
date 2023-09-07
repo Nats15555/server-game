@@ -1,6 +1,6 @@
 package connectDescription.connection;
 
-import authServer.dbDescription.HashCode;
+import dbDescription.HashCode;
 
 import java.nio.charset.StandardCharsets;
 import java.util.*;

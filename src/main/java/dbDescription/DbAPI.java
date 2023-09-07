@@ -1,10 +1,10 @@
-package authServer.dbDescription;
+package dbDescription;
 
-import authServer.dbDescription.database.DbObject;
-import authServer.dbDescription.database.PGSFunctions;
-import authServer.dbDescription.database.User;
-import gameLogic.levelDescriptors.LevelObject;
-import gameLogic.levelDescriptors.levels.Level;
+import dbDescription.database.DbObject;
+import dbDescription.database.PGSFunctions;
+import dbDescription.database.User;
+import gameLogic.levelDescription.LevelObject;
+import gameLogic.levelDescription.Level;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -31,7 +31,7 @@ public class DbAPI {
     }
 
     public String addUser(String username, String pass, Connection connection) {
-        authServer.dbDescription.database.User user;
+        dbDescription.database.User user;
         DbObject dbObj = new DbObject();
         try {
             user = new User(username, pass);

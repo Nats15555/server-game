@@ -1,4 +1,4 @@
-package gameLogic.runeDescription.enams;
+package gameLogic.spellDescription.runeDescription.enams;
 
 public enum TypeRune {
 

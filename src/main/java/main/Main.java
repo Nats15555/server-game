@@ -1,7 +1,7 @@
 package main;
 
 import authServer.AuthorizationServer;
-import authServer.dbDescription.creation.DataBaseCreation;
+import dbDescription.creation.DataBaseCreation;
 import connectDescription.connection.SessionList;
 
 import java.io.IOException;

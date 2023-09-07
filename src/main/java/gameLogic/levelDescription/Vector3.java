@@ -1,4 +1,4 @@
-package gameLogic.levelDescriptors;
+package gameLogic.levelDescription;
 
 public class Vector3 {
     public double x;
