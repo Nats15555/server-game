@@ -1,4 +1,4 @@
-package gameLogic.rune.enams;
+package gameLogic.runeDescription.enams;
 
 public enum TypeRune {
 
@@ -15,7 +15,7 @@ public enum TypeRune {
     SIZE_RUNE(0),
 
     // Руна концентрации энергии. Влияет на мощь заклинания
-    CONCENTRATION_ENERGY_RUNE(0),
+    ENERGY_CONCENTRATION_RUNE(0),
 
     // Руна типа энергии
     ENERGY_TYPE_RUNE(0),
